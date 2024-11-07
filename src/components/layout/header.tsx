@@ -99,7 +99,7 @@ export default function Header() {
   const pathname = usePathname();
   return (
     <header className="fixed inset-x-0 top-0 bg-background">
-      <div className="mx-auto flex max-w-screen-2xl items-center justify-center gap-5 px-4 py-3">
+      <div className="mx-auto flex max-w-screen-2xl items-center justify-center gap-0 px-4 py-3 md:gap-5">
         <SidebarTrigger className="block md:hidden" />
         <Image
           src={haebotLogo}
@@ -117,7 +117,7 @@ export default function Header() {
                 if (headerLink.content !== undefined) {
                   return (
                     <NavigationMenuItem key={headerLink.display}>
-                      <NavigationMenuTrigger className="w-[105px]">
+                      <NavigationMenuTrigger>
                         {headerLink.display}
                       </NavigationMenuTrigger>
                       <NavigationMenuContent>
@@ -144,7 +144,7 @@ export default function Header() {
                         aria-current={isCurrent ? "page" : "false"}
                         className={cn(
                           navigationMenuTriggerStyle(),
-                          "w-[105px] text-foreground hover:text-foreground/70 focus:text-foreground/70",
+                          "text-foreground hover:text-foreground/70 focus:text-foreground/70",
                           isCurrent &&
                             "text-primary hover:text-primary/70 focus:text-primary/70",
                         )}

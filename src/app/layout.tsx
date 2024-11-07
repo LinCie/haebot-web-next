@@ -3,6 +3,8 @@ import { Roboto } from "next/font/google";
 import "./globals.css";
 
 import Header from "@/components/layout/header";
+import { SidebarProvider } from "@/components/ui/sidebar";
+import { AppSidebar } from "@/components/layout/app-sidebar";
 
 const roboto = Roboto({
   weight: ["300", "400", "500", "700"],
@@ -24,8 +26,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${roboto.className}`}>
-        <Header />
-        {children}
+        <SidebarProvider defaultOpen={false}>
+          <AppSidebar />
+          <Header />
+          {children}
+        </SidebarProvider>
       </body>
     </html>
   );

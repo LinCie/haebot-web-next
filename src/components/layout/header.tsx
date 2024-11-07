@@ -20,6 +20,7 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
+import { SidebarTrigger } from "../ui/sidebar";
 
 interface IHeaderLink {
   display: string;
@@ -96,10 +97,10 @@ ListItem.displayName = "ListItem";
 
 export default function Header() {
   const pathname = usePathname();
-
   return (
     <header className="fixed inset-x-0 top-0 bg-background">
       <div className="mx-auto flex max-w-screen-2xl items-center justify-center gap-5 px-4 py-3">
+        <SidebarTrigger className="block md:hidden" />
         <Image
           src={haebotLogo}
           alt="HaeBot"

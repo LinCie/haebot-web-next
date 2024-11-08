@@ -7,6 +7,7 @@ import Link from "next/link";
 
 import { Phone } from "lucide-react";
 
+import { headerLinks } from "@/shared/links";
 import haebotLogo from "@/assets/logo.png";
 import { cn } from "@/lib/utils";
 
@@ -21,52 +22,6 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { SidebarTrigger } from "../ui/sidebar";
-
-interface IHeaderLink {
-  display: string;
-  url: string;
-  content?: {
-    display: string;
-    url: string;
-    description: string;
-  }[];
-}
-
-const headerLinks: IHeaderLink[] = [
-  {
-    display: "Home",
-    url: "/",
-  },
-  {
-    display: "Products",
-    url: "/products",
-    content: [
-      {
-        display: "test 1",
-        url: "/",
-        description: "lorem ipsum dolor sit amet",
-      },
-      {
-        display: "test 2",
-        url: "/",
-        description: "lorem ipsum dolor sit amet",
-      },
-      {
-        display: "test 3",
-        url: "/",
-        description: "lorem ipsum dolor sit amet",
-      },
-    ],
-  },
-  {
-    display: "About",
-    url: "/about",
-  },
-  {
-    display: "Contacts",
-    url: "/contacts",
-  },
-];
 
 const ListItem = React.forwardRef<
   React.ElementRef<"a">,

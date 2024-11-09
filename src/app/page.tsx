@@ -15,7 +15,7 @@ function FeatureSection() {
   return (
     <section
       ref={ref}
-      className="bg-white py-8 text-zinc-900 sm:py-16 sm:pb-24 md:pb-28"
+      className="bg-background py-8 text-foreground sm:py-16 sm:pb-24 md:pb-28"
     >
       <div className="mx-auto max-w-screen-xl px-6 lg:px-16">
         <div className="mb-8 sm:mb-20">
@@ -30,7 +30,7 @@ function FeatureSection() {
           </h2>
           <p
             className={cn(
-              "max-w-screen-sm text-base text-zinc-400 opacity-0 sm:text-lg",
+              "max-w-screen-sm text-base text-muted-foreground opacity-0 sm:text-lg",
               inView &&
                 "opacity-1 duration-1000 ease-in-out animate-in fade-in slide-in-from-left-8",
             )}
@@ -47,35 +47,37 @@ function FeatureSection() {
           )}
         >
           <li className="flex flex-col">
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded bg-blue-100 text-blue-500">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded bg-primary/75 text-primary-foreground">
               <Package size={24} />
             </div>
-            <h3 className="text-xl font-bold text-zinc-800">
+            <h3 className="text-xl font-bold text-foreground">
               Komponen CNC Berkualitas
             </h3>
-            <p className="text-base text-zinc-500">
+            <p className="text-base text-muted-foreground">
               Temukan berbagai macam suku cadang CNC dari merek-merek terkemuka,
               yang disesuaikan dengan kebutuhan industri Anda.
             </p>
           </li>
           <li className="flex flex-col">
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded bg-blue-100 text-blue-500">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded bg-primary/75 text-primary-foreground">
               <Users size={24} />
             </div>
-            <h3 className="text-xl font-bold text-zinc-800">Konsultasi Ahli</h3>
-            <p className="text-base text-zinc-500">
+            <h3 className="text-xl font-bold text-foreground">
+              Konsultasi Ahli
+            </h3>
+            <p className="text-base text-muted-foreground">
               Manfaatkan konsultasi teknis mendalam kami untuk mengoptimalkan
               kinerja dan efisiensi mesin Anda.
             </p>
           </li>
           <li className="flex flex-col">
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded bg-blue-100 text-blue-500">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded bg-primary/75 text-primary-foreground">
               <Settings size={24} />
             </div>
-            <h3 className="text-xl font-bold text-zinc-800">
+            <h3 className="text-xl font-bold text-foreground">
               Solusi Otomatisasi
             </h3>
-            <p className="text-base text-zinc-500">
+            <p className="text-base text-muted-foreground">
               HaeBot adalah mitra Anda dalam mencapai produktivitas maksimal
               dengan solusi CNC yang andal.
             </p>
@@ -88,14 +90,14 @@ function FeatureSection() {
 
 function HeroSection() {
   return (
-    <section id="hero-section" className="h-[750px] w-full lg:h-[625px]">
+    <section id="hero-section" className="h-[750px] w-full lg:h-[600px]">
       <div className="mx-auto flex size-full max-w-screen-xl flex-col gap-6 lg:flex-row">
         <div className="flex flex-1 flex-col items-center justify-end gap-4 md:gap-6 lg:flex-[3] lg:items-start lg:justify-center">
           <header>
             <h2 className="mb-1 scroll-m-20 bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-center text-3xl font-extrabold tracking-tight text-transparent duration-700 ease-in-out animate-in fade-in slide-in-from-left-8 md:mb-2 lg:mb-3 lg:text-start lg:text-5xl">
               Menyediakan Konsultasi, Memberikan Solusi
             </h2>
-            <p className="text-center leading-5 duration-1000 ease-in-out animate-in fade-in slide-in-from-left-8 lg:text-start">
+            <p className="text-center leading-5 text-muted-foreground duration-1000 ease-in-out animate-in fade-in slide-in-from-left-8 lg:text-start">
               Haebot Berdedikasi untuk Memberikan Solusi Kebutuhan CNC dan
               Produksi Anda
             </p>

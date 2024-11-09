@@ -9,6 +9,54 @@ import { Button } from "@/components/ui/button";
 import cncStocks from "@/assets/cnc-stocks.png";
 import { cn } from "@/lib/utils";
 
+interface IFeature {
+  icon: React.ReactElement;
+  title: string;
+  description: string;
+}
+
+const features: IFeature[] = [
+  {
+    icon: (
+      <Package
+        role="img"
+        focusable="false"
+        aria-hidden="true"
+        className="size-6"
+      />
+    ),
+    title: "Komponen CNC Berkualitas",
+    description:
+      "Temukan berbagai macam suku cadang CNC dari merek-merek terkemuka, yang disesuaikan dengan kebutuhan industri Anda.",
+  },
+  {
+    icon: (
+      <Users
+        role="img"
+        focusable="false"
+        aria-hidden="true"
+        className="size-6"
+      />
+    ),
+    title: "Konsultasi Ahli",
+    description:
+      "Manfaatkan konsultasi teknis mendalam kami untuk mengoptimalkan kinerja dan efisiensi mesin Anda.",
+  },
+  {
+    icon: (
+      <Settings
+        role="img"
+        focusable="false"
+        aria-hidden="true"
+        className="size-6"
+      />
+    ),
+    title: "Solusi Otomatisasi",
+    description:
+      "HaeBot adalah mitra Anda dalam mencapai produktivitas maksimal dengan solusi CNC yang andal.",
+  },
+];
+
 function FeatureSection() {
   const { ref, inView } = useInView({ threshold: 0.3, triggerOnce: true });
 
@@ -49,57 +97,19 @@ function FeatureSection() {
           )}
           role="list"
         >
-          <li className="flex flex-col" role="listitem">
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded bg-primary/75 text-primary-foreground">
-              <Package
-                role="img"
-                focusable="false"
-                aria-hidden="true"
-                className="size-6"
-              />
-            </div>
-            <h3 className="text-xl font-bold text-foreground">
-              Komponen CNC Berkualitas
-            </h3>
-            <p className="text-base text-muted-foreground">
-              Temukan berbagai macam suku cadang CNC dari merek-merek terkemuka,
-              yang disesuaikan dengan kebutuhan industri Anda.
-            </p>
-          </li>
-          <li className="flex flex-col" role="listitem">
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded bg-primary/75 text-primary-foreground">
-              <Users
-                role="img"
-                focusable="false"
-                aria-hidden="true"
-                className="size-6"
-              />
-            </div>
-            <h3 className="text-xl font-bold text-foreground">
-              Konsultasi Ahli
-            </h3>
-            <p className="text-base text-muted-foreground">
-              Manfaatkan konsultasi teknis mendalam kami untuk mengoptimalkan
-              kinerja dan efisiensi mesin Anda.
-            </p>
-          </li>
-          <li className="flex flex-col" role="listitem">
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded bg-primary/75 text-primary-foreground">
-              <Settings
-                role="img"
-                focusable="false"
-                aria-hidden="true"
-                className="size-6"
-              />
-            </div>
-            <h3 className="text-xl font-bold text-foreground">
-              Solusi Otomatisasi
-            </h3>
-            <p className="text-base text-muted-foreground">
-              HaeBot adalah mitra Anda dalam mencapai produktivitas maksimal
-              dengan solusi CNC yang andal.
-            </p>
-          </li>
+          {features.map((feature, index) => (
+            <li key={index} className="flex flex-col" role="listitem">
+              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded bg-primary/75 text-primary-foreground">
+                {feature.icon}
+              </div>
+              <h3 className="text-xl font-bold text-foreground">
+                {feature.title}
+              </h3>
+              <p className="text-base text-muted-foreground">
+                {feature.description}
+              </p>
+            </li>
+          ))}
         </ul>
       </div>
     </section>

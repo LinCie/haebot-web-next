@@ -29,7 +29,7 @@ export default function RootLayout({
         <SidebarProvider defaultOpen={false}>
           <AppSidebar />
           <Header />
-          {children}
+          <main className="w-full px-4 md:px-6">{children}</main>
         </SidebarProvider>
       </body>
     </html>

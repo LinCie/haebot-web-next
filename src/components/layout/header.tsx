@@ -53,7 +53,7 @@ ListItem.displayName = "ListItem";
 export default function Header() {
   const pathname = usePathname();
   return (
-    <header className="fixed inset-x-0 top-0 z-[100] bg-background">
+    <header className="fixed inset-x-0 top-0 z-10 bg-background">
       <div className="mx-auto flex max-w-screen-2xl items-center justify-center gap-1 px-4 py-3 md:gap-5">
         <SidebarTrigger className="size-8 md:hidden" />
         <Image

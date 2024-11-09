@@ -23,7 +23,11 @@ import {
 
 export function AppSidebar() {
   return (
-    <Sidebar className="md:hidden" variant="sidebar" collapsible="offcanvas">
+    <Sidebar
+      className="z-20 md:hidden"
+      variant="sidebar"
+      collapsible="offcanvas"
+    >
       {/* Sidebar Header */}
       <SidebarHeader>
         <div>
@@ -57,7 +61,7 @@ export function AppSidebar() {
                       </CollapsibleTrigger>
 
                       {/* Nested menu items */}
-                      <CollapsibleContent className="data-[state=open]:animate-slide-down data-[state=closed]:animate-slide-up overflow-hidden">
+                      <CollapsibleContent className="overflow-hidden data-[state=closed]:animate-slide-up data-[state=open]:animate-slide-down">
                         <SidebarMenuSub>
                           {link.content.map((content) => {
                             return (

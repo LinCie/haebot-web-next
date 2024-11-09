@@ -54,8 +54,8 @@ export default function Header() {
   const pathname = usePathname();
   return (
     <header className="fixed inset-x-0 top-0 bg-background">
-      <div className="mx-auto flex max-w-screen-2xl items-center justify-center gap-0 px-4 py-3 md:gap-5">
-        <SidebarTrigger className="block md:hidden" />
+      <div className="mx-auto flex max-w-screen-2xl items-center justify-center gap-1 px-4 py-3 md:gap-5">
+        <SidebarTrigger className="size-8 md:hidden" />
         <Image
           src={haebotLogo}
           alt="HaeBot"
@@ -116,7 +116,12 @@ export default function Header() {
         <div>
           <Button>
             Hubungi Kami
-            <Phone role="img" focusable="false" aria-hidden="true" />
+            <Phone
+              role="img"
+              focusable="false"
+              aria-hidden="true"
+              className="size-4"
+            />
           </Button>
         </div>
       </div>

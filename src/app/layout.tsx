@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     siteName: "HaeBot",
     images: [
       {
-        url: "/images/cnc_machine.jpg",
+        url: "/images/cnc-machine.jpg",
         alt: "Komponen dan layanan konsultasi CNC HaeBot",
       },
     ],
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     title: "HaeBot | Komponen & Konsultasi CNC | PT HaeBot Teknologi Indonesia",
     description:
       "Tingkatkan operasional CNC Anda dengan HaeBot, sumber terpercaya Anda untuk komponen CNC berkualitas tinggi dan layanan konsultasi ahli. Temukan berbagai macam suku cadang CNC dari merek-merek terkemuka, yang disesuaikan dengan kebutuhan industri Anda. Manfaatkan konsultasi teknis mendalam kami untuk mengoptimalkan kinerja dan efisiensi mesin Anda. HaeBot - mitra Anda dalam mencapai produktivitas maksimal dengan solusi CNC yang andal.",
-    images: ["/images/cnc_machine.jpg"],
+    images: ["/images/cnc-machine.jpg"],
   },
 };
 

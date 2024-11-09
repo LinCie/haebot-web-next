@@ -16,6 +16,10 @@ const config: Config = {
         "slide-down": "slide-down 300ms ease-out",
         "slide-up": "slide-up 300ms ease-out",
       },
+      animationDuration: {
+        "1250": "1250ms",
+        "1500": "1500ms",
+      },
       keyframes: {
         "slide-down": {
           "0%": { height: "0" },

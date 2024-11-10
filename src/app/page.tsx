@@ -135,7 +135,12 @@ function CarouselSection() {
                           asChild
                         >
                           <a
-                            href={`https://wa.me/62812345678?text=${encodeURI(`Hallo min! Aku mau tanya tanya tentang ${product.title}`)}`}
+                            href={
+                              "https://wa.me/62812345678?text=" +
+                              encodeURIComponent(
+                                `Hallo min! Aku mau tanya tanya tentang ${product.title}`,
+                              )
+                            }
                           >
                             Chat kami
                             <WhatsApp

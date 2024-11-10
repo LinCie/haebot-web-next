@@ -9,6 +9,152 @@ import machine from "@/assets/machine.jpg";
 
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import Autoplay from "embla-carousel-autoplay";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import { Card } from "@/components/ui/card";
+import { WhatsApp } from "@/assets/svg/WhatsApp";
+
+interface IProductCard {
+  title: string;
+  description: string;
+  imageUrl: string;
+}
+
+const products: IProductCard[] = [
+  {
+    title: "Product 1",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In viverra",
+    imageUrl: machine.src,
+  },
+  {
+    title: "Product 2",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sed",
+    imageUrl: machine.src,
+  },
+  {
+    title: "Product 3",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque posuere",
+    imageUrl: machine.src,
+  },
+  {
+    title: "Product 4",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nec",
+    imageUrl: machine.src,
+  },
+  {
+    title: "Product 5",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur mollis",
+    imageUrl: machine.src,
+  },
+];
+
+function CarouselSection() {
+  const { ref, inView } = useInView({ threshold: 0.3, triggerOnce: true });
+
+  return (
+    <section
+      ref={ref}
+      className="bg-background py-8 text-foreground sm:py-16 sm:pb-24 md:pb-28"
+    >
+      <div className="mx-auto max-w-screen-xl px-6 lg:px-16">
+        <header className="mb-8 text-center sm:mb-20">
+          <h2
+            className={cn(
+              "mb-2 text-3xl font-bold opacity-0",
+              inView &&
+                "opacity-1 duration-700 ease-in-out animate-in fade-in slide-in-from-left-8",
+            )}
+          >
+            Galeri Produk Kami
+          </h2>
+          <p
+            className={cn(
+              "text-base text-muted-foreground opacity-0",
+              inView &&
+                "opacity-1 duration-1000 ease-in-out animate-in fade-in slide-in-from-left-8",
+            )}
+          >
+            Lihat berbagai produk yang kami tawarkan untuk memenuhi kebutuhan
+            industri Anda. Kami berkomitmen untuk memberikan yang terbaik dalam
+            setiap aspek layanan kami.
+          </p>
+        </header>
+        <div>
+          <Carousel
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+            plugins={[
+              Autoplay({
+                delay: 2500,
+              }),
+            ]}
+          >
+            <CarouselContent>
+              {products.map((product) => {
+                return (
+                  <CarouselItem
+                    className="md:basis-1/2 lg:basis-1/3 xl:basis-1/4"
+                    key={product.title}
+                  >
+                    <Card className="mx-auto width w-full max-w-xs rounded-xl border">
+                      <div className="grid gap-4 p-4">
+                        <div className="aspect-[4/5] w-full overflow-hidden rounded-xl">
+                          <Image
+                            src={product.imageUrl}
+                            alt={`gambar ${product.title}`}
+                            loading="lazy"
+                            decoding="async"
+                            width="400"
+                            height="500"
+                            className="aspect-[4/5] w-full border object-cover"
+                          />
+                        </div>
+                        <div className="grid gap-1.5">
+                          <h3 className="text-base font-semibold md:text-base">
+                            {product.title}
+                          </h3>
+                          <p className="text-sm text-muted-foreground md:text-base">
+                            {product.description}
+                          </p>
+                        </div>
+                        <Button
+                          className="bg-[#25D366] hover:bg-[#25D366]/90 [&_svg]:size-5"
+                          asChild
+                        >
+                          <a
+                            href={`https://wa.me/62812345678?text=${encodeURI(`Hallo min! Aku mau tanya tanya tentang ${product.title}`)}`}
+                          >
+                            Chat kami
+                            <WhatsApp />
+                          </a>
+                        </Button>
+                      </div>
+                    </Card>
+                  </CarouselItem>
+                );
+              })}
+            </CarouselContent>
+            <CarouselPrevious className="hidden md:block" />
+            <CarouselNext className="hidden md:block" />
+          </Carousel>
+        </div>
+      </div>
+    </section>
+  );
+}
 
 interface IFeature {
   icon: React.ReactElement;
@@ -186,6 +332,7 @@ export default function Home() {
     <>
       <HeroSection />
       <FeatureSection />
+      <CarouselSection />
     </>
   );
 }

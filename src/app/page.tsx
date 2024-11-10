@@ -136,17 +136,18 @@ function HeroSection() {
         <div className="absolute inset-0 mx-auto flex max-w-screen-lg flex-col items-center justify-center gap-6 px-4">
           <header>
             <small className="mb-2 block text-center text-xs leading-none text-background lg:text-sm">
-              Memberdayakan Operasional Anda dengan Solusi CNC yang Canggih
+              Meningkatkan Efisiensi Operasional Anda dengan Solusi CNC
+              Terpercaya
             </small>
             <h2
               id="hero-section-title"
               className="mb-3 scroll-m-20 text-center text-4xl font-extrabold tracking-tight text-background md:mb-4 lg:mb-5 lg:text-6xl"
             >
-              Solusi CNC Terpercaya untuk Industri Anda
+              Solusi Terbaik untuk Kebutuhan CNC Anda
             </h2>
             <p className="text base mb-4 text-center text-base tracking-tight text-muted lg:text-lg">
-              Tingkatkan operasional Anda dengan komponen berkualitas tinggi dan
-              layanan konsultasi ahli dari HaeBot
+              Dapatkan komponen berkualitas tinggi dan layanan konsultasi ahli
+              untuk meningkatkan produktivitas Anda
             </p>
           </header>
           <Button variant="secondary">

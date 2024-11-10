@@ -1,24 +1,32 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import { useInView } from "react-intersection-observer";
 
 import { Phone, Package, Settings, Users } from "lucide-react";
 
 import machine from "@/assets/machine.jpg";
+import { WhatsApp } from "@/assets/svg/WhatsApp";
 
 import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+
 import { cn } from "@/lib/utils";
+
 import Autoplay from "embla-carousel-autoplay";
 import {
-  Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { Card } from "@/components/ui/card";
-import { WhatsApp } from "@/assets/svg/WhatsApp";
+import { Skeleton } from "@/components/ui/skeleton";
+
+const LazyCarousel = dynamic(
+  () => import("@/components/ui/carousel").then((mod) => mod.Carousel),
+  { loading: () => <Skeleton className="h-96 w-full rounded-md" /> },
+);
 
 interface IProductCard {
   title: string;
@@ -91,74 +99,76 @@ function CarouselSection() {
           </p>
         </header>
         <div>
-          <Carousel
-            opts={{
-              align: "start",
-              loop: true,
-            }}
-            plugins={[
-              Autoplay({
-                delay: 2500,
-              }),
-            ]}
-          >
-            <CarouselContent>
-              {products.map((product) => {
-                return (
-                  <CarouselItem
-                    className="md:basis-1/2 lg:basis-1/3 xl:basis-1/4"
-                    key={product.title}
-                  >
-                    <Card className="width mx-auto w-full max-w-xs rounded-xl border">
-                      <div className="grid gap-4 p-4">
-                        <div className="aspect-[4/5] w-full overflow-hidden rounded-xl">
-                          <Image
-                            src={product.imageUrl}
-                            alt={`gambar ${product.title}`}
-                            loading="lazy"
-                            decoding="async"
-                            width="400"
-                            height="500"
-                            className="aspect-[4/5] w-full border object-cover"
-                          />
-                        </div>
-                        <div className="grid gap-1.5">
-                          <h3 className="text-base font-semibold md:text-base">
-                            {product.title}
-                          </h3>
-                          <p className="text-sm text-muted-foreground md:text-base">
-                            {product.description}
-                          </p>
-                        </div>
-                        <Button
-                          className="bg-[#075E54] hover:bg-[#075E54]/90 [&_svg]:size-5"
-                          asChild
-                        >
-                          <a
-                            href={
-                              "https://wa.me/62812345678?text=" +
-                              encodeURIComponent(
-                                `Hallo min! Aku mau tanya tanya tentang ${product.title}`,
-                              )
-                            }
-                          >
-                            Chat kami
-                            <WhatsApp
-                              role="img"
-                              focusable="false"
-                              aria-hidden="true"
+          {inView && (
+            <LazyCarousel
+              opts={{
+                align: "start",
+                loop: true,
+              }}
+              plugins={[
+                Autoplay({
+                  delay: 2500,
+                }),
+              ]}
+            >
+              <CarouselContent>
+                {products.map((product) => {
+                  return (
+                    <CarouselItem
+                      className="md:basis-1/2 lg:basis-1/3 xl:basis-1/4"
+                      key={product.title}
+                    >
+                      <Card className="width mx-auto w-full max-w-xs rounded-xl border">
+                        <div className="grid gap-4 p-4">
+                          <div className="aspect-[4/5] w-full overflow-hidden rounded-xl">
+                            <Image
+                              src={product.imageUrl}
+                              alt={`gambar ${product.title}`}
+                              loading="lazy"
+                              decoding="async"
+                              width="400"
+                              height="500"
+                              className="aspect-[4/5] w-full border object-cover"
                             />
-                          </a>
-                        </Button>
-                      </div>
-                    </Card>
-                  </CarouselItem>
-                );
-              })}
-            </CarouselContent>
-            <CarouselPrevious className="hidden md:inline-flex" />
-            <CarouselNext className="hidden md:inline-flex" />
-          </Carousel>
+                          </div>
+                          <div className="grid gap-1.5">
+                            <h3 className="text-base font-semibold md:text-base">
+                              {product.title}
+                            </h3>
+                            <p className="text-sm text-muted-foreground md:text-base">
+                              {product.description}
+                            </p>
+                          </div>
+                          <Button
+                            className="bg-[#075E54] hover:bg-[#075E54]/90 [&_svg]:size-5"
+                            asChild
+                          >
+                            <a
+                              href={
+                                "https://wa.me/62812345678?text=" +
+                                encodeURIComponent(
+                                  `Hallo min! Aku mau tanya tanya tentang ${product.title}`,
+                                )
+                              }
+                            >
+                              Chat kami
+                              <WhatsApp
+                                role="img"
+                                focusable="false"
+                                aria-hidden="true"
+                              />
+                            </a>
+                          </Button>
+                        </div>
+                      </Card>
+                    </CarouselItem>
+                  );
+                })}
+              </CarouselContent>
+              <CarouselPrevious className="hidden md:inline-flex" />
+              <CarouselNext className="hidden md:inline-flex" />
+            </LazyCarousel>
+          )}
         </div>
       </div>
     </section>

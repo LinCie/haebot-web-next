@@ -109,7 +109,7 @@ function CarouselSection() {
                     className="md:basis-1/2 lg:basis-1/3 xl:basis-1/4"
                     key={product.title}
                   >
-                    <Card className="mx-auto width w-full max-w-xs rounded-xl border">
+                    <Card className="width mx-auto w-full max-w-xs rounded-xl border">
                       <div className="grid gap-4 p-4">
                         <div className="aspect-[4/5] w-full overflow-hidden rounded-xl">
                           <Image
@@ -138,7 +138,11 @@ function CarouselSection() {
                             href={`https://wa.me/62812345678?text=${encodeURI(`Hallo min! Aku mau tanya tanya tentang ${product.title}`)}`}
                           >
                             Chat kami
-                            <WhatsApp />
+                            <WhatsApp
+                              role="img"
+                              focusable="false"
+                              aria-hidden="true"
+                            />
                           </a>
                         </Button>
                       </div>

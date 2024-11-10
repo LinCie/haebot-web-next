@@ -131,7 +131,7 @@ function CarouselSection() {
                           </p>
                         </div>
                         <Button
-                          className="bg-[#25D366] hover:bg-[#25D366]/90 [&_svg]:size-5"
+                          className="bg-[#075E54] hover:bg-[#075E54]/90 [&_svg]:size-5"
                           asChild
                         >
                           <a

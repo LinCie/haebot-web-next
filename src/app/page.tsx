@@ -146,7 +146,7 @@ function HeroSection() {
             </h2>
             <p className="text base mb-4 text-center text-base tracking-tight text-muted lg:text-lg">
               Tingkatkan operasional Anda dengan komponen berkualitas tinggi dan
-              layanan konsultasi ahli dari HaeBot.
+              layanan konsultasi ahli dari HaeBot
             </p>
           </header>
           <Button variant="secondary">

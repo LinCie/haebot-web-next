@@ -64,7 +64,7 @@ export default function RootLayout({
         <SidebarProvider defaultOpen={false}>
           <AppSidebar />
           <Header />
-          <main className="w-full px-4 md:px-6">{children}</main>
+          <main className="w-full">{children}</main>
         </SidebarProvider>
       </body>
     </html>

@@ -5,8 +5,9 @@ import { useInView } from "react-intersection-observer";
 
 import { Phone, Package, Settings, Users } from "lucide-react";
 
+import machine from "@/assets/machine.jpg";
+
 import { Button } from "@/components/ui/button";
-import cncStocks from "@/assets/cnc-stocks.png";
 import { cn } from "@/lib/utils";
 
 interface IFeature {
@@ -120,24 +121,35 @@ function HeroSection() {
   return (
     <section
       id="hero-section"
-      className="h-[750px] w-full lg:h-[600px]"
+      className="h-screen w-full"
       aria-labelledby="hero-section-title"
     >
-      <div className="mx-auto flex size-full max-w-screen-xl flex-col gap-6 lg:flex-row">
-        <div className="flex flex-1 flex-col items-center justify-end gap-4 md:gap-6 lg:flex-[3] lg:items-start lg:justify-center">
+      <div className="relative size-full">
+        <Image
+          src={machine}
+          alt=""
+          decoding="async"
+          loading="eager"
+          className="size-full object-cover"
+        />
+        <div className="absolute inset-0 bg-blue-950 opacity-80" />
+        <div className="absolute inset-0 mx-auto flex max-w-screen-lg flex-col items-center justify-center gap-6 px-4">
           <header>
+            <small className="mb-2 block text-center text-xs leading-none text-background lg:text-sm">
+              Memberdayakan Operasional Anda dengan Solusi CNC yang Canggih
+            </small>
             <h2
               id="hero-section-title"
-              className="mb-1 scroll-m-20 bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-center text-3xl font-extrabold tracking-tight text-transparent duration-700 ease-in-out animate-in fade-in slide-in-from-left-8 md:mb-2 lg:mb-3 lg:text-start lg:text-5xl"
+              className="mb-3 scroll-m-20 text-center text-4xl font-extrabold tracking-tight text-background md:mb-4 lg:mb-5 lg:text-6xl"
             >
-              Menyediakan Konsultasi, Memberikan Solusi
+              Solusi CNC Terpercaya untuk Industri Anda
             </h2>
-            <p className="text-center leading-5 text-muted-foreground duration-1000 ease-in-out animate-in fade-in slide-in-from-left-8 lg:text-start">
-              Haebot Berdedikasi untuk Memberikan Solusi Kebutuhan CNC dan
-              Produksi Anda
+            <p className="text base mb-4 text-center text-base tracking-tight text-muted lg:text-lg">
+              Tingkatkan operasional Anda dengan komponen berkualitas tinggi dan
+              layanan konsultasi ahli dari HaeBot.
             </p>
           </header>
-          <Button className="duration-1000 ease-in-out animate-in fade-in slide-in-from-left-8">
+          <Button variant="secondary">
             Hubungi Kami
             <Phone
               role="img"
@@ -147,14 +159,18 @@ function HeroSection() {
             />
           </Button>
         </div>
-        <div className="flex flex-1 items-start justify-center lg:flex-[4] lg:items-center">
-          <Image
-            src={cncStocks}
-            alt="Gambar stok cnc"
-            decoding="async"
-            loading="eager"
-            className="h-60 w-auto object-cover duration-1000 ease-in-out animate-in fade-in slide-in-from-bottom-8 lg:h-96"
-          />
+        <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 1200 120"
+            preserveAspectRatio="none"
+            className="relative block h-8 w-[calc(100%+1.3px)] lg:h-16"
+          >
+            <path
+              d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z"
+              className="fill-background"
+            />
+          </svg>
         </div>
       </div>
     </section>

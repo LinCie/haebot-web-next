@@ -117,12 +117,15 @@ function CarouselSection() {
 
   return (
     <section
+      id="carousel-section"
+      aria-labelledby="carousel-section-title"
       ref={ref}
       className="bg-background py-8 text-foreground sm:py-16 sm:pb-24 md:pb-28"
     >
       <div className="mx-auto max-w-screen-xl px-6 lg:px-16">
         <header className="mb-8 text-center sm:mb-20">
           <h2
+            id="carousel-section-title"
             className={cn(
               "mb-2 text-3xl font-bold opacity-0",
               inView &&
@@ -398,8 +401,8 @@ export default function Home() {
   return (
     <>
       <HeroSection />
-      <FeatureSection />
       <CarouselSection />
+      <FeatureSection />
       <CTASection />
     </>
   );

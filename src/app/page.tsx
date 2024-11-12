@@ -22,6 +22,57 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 
+function CTASection() {
+  const { ref, inView } = useInView({ threshold: 0.3, triggerOnce: true });
+
+  return (
+    <section
+      ref={ref}
+      id="cta-section"
+      aria-labelledby="cta-section-title"
+      className="sm:py-8"
+    >
+      <div className="mx-auto max-w-screen-xl px-6 lg:px-16">
+        <header className="mb-8">
+          <h2
+            id="cta-section-header"
+            className={cn(
+              "mx-auto mb-2 max-w-screen-md text-center text-2xl font-bold opacity-0 md:text-3xl",
+              inView &&
+                "opacity-1 duration-700 ease-in-out animate-in fade-in slide-in-from-left-8",
+            )}
+          >
+            Optimalkan Kinerja CNC Anda Bersama HaeBot!
+          </h2>
+          <p
+            className={cn(
+              "mx-auto max-w-screen-md text-center text-base text-zinc-400 opacity-0 sm:text-lg",
+              inView &&
+                "opacity-1 duration-1000 ease-in-out animate-in fade-in slide-in-from-left-8",
+            )}
+          >
+            Bergabunglah dengan kami di HaeBot untuk mendapatkan komponen CNC
+            berkualitas tinggi dan layanan konsultasi ahli yang akan
+            meningkatkan efisiensi operasional mesin Anda. Temukan solusi yang
+            tepat untuk kebutuhan industri Anda.
+          </p>
+        </header>
+        <div className="flex items-center justify-center">
+          <Button
+            className={cn(
+              "opacity-0",
+              inView &&
+                "opacity-1 duration-1000 ease-in-out animate-in fade-in slide-in-from-bottom-8",
+            )}
+          >
+            Hubungi Kami <Phone className="size-4" />
+          </Button>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 interface IProductCard {
   title: string;
   description: string;
@@ -349,6 +400,7 @@ export default function Home() {
       <HeroSection />
       <FeatureSection />
       <CarouselSection />
+      <CTASection />
     </>
   );
 }

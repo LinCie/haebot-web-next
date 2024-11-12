@@ -30,7 +30,7 @@ function CTASection() {
       ref={ref}
       id="cta-section"
       aria-labelledby="cta-section-title"
-      className="sm:py-8"
+      className="py-8 sm:py-16"
     >
       <div className="mx-auto max-w-screen-xl px-6 lg:px-16">
         <header className="mb-8">
@@ -120,7 +120,7 @@ function CarouselSection() {
       id="carousel-section"
       aria-labelledby="carousel-section-title"
       ref={ref}
-      className="bg-background py-8 text-foreground sm:py-16 sm:pb-24 md:pb-28"
+      className="bg-background py-8 text-foreground sm:py-16"
     >
       <div className="mx-auto max-w-screen-xl px-6 lg:px-16">
         <header className="mb-8 text-center sm:mb-20">
@@ -280,7 +280,7 @@ function FeatureSection() {
   return (
     <section
       ref={ref}
-      className="bg-background py-8 text-foreground sm:py-16 sm:pb-24 md:pb-28"
+      className="bg-background py-8 text-foreground sm:py-16"
       aria-labelledby="feature-section-title"
     >
       <div className="mx-auto max-w-screen-xl px-6 lg:px-16">

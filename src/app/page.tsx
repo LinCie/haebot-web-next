@@ -1,15 +1,15 @@
 "use client";
 
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import { useInView } from "react-intersection-observer";
 
 import { Phone, Package, Settings, Users } from "lucide-react";
 
+import avatar from "@/assets/avayar.jpg";
 import machine from "@/assets/machine.jpg";
 import { WhatsApp } from "@/assets/svg/WhatsApp";
 
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
 
 import { cn } from "@/lib/utils";
 
@@ -21,6 +21,131 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+} from "@/components/ui/card";
+
+interface ITestimonialCard {
+  author: string;
+  authorPosition: string;
+  score: number;
+  testimonial: string;
+  avatar: StaticImageData;
+}
+
+const Testimonials: ITestimonialCard[] = [
+  {
+    author: "John Doe",
+    authorPosition: "Pelanggan HaeBot",
+    score: 5,
+    testimonial:
+      "Lorem ipsum odor amet, consectetuer adipiscing elit. Platea eros aptent natoque magnis porttitor turpis litora vivamus tempus! Parturient aenean sed iaculis turpis gravida porttitor lacus dis.",
+    avatar: avatar,
+  },
+  {
+    author: "John Doe",
+    authorPosition: "Pelanggan HaeBot",
+    score: 5,
+    testimonial:
+      "Lorem ipsum odor amet, consectetuer adipiscing elit. Platea eros aptent natoque magnis porttitor turpis litora vivamus tempus! Parturient aenean sed iaculis turpis gravida porttitor lacus dis.",
+    avatar: avatar,
+  },
+  {
+    author: "John Doe",
+    authorPosition: "Pelanggan HaeBot",
+    score: 5,
+    testimonial:
+      "Lorem ipsum odor amet, consectetuer adipiscing elit. Platea eros aptent natoque magnis porttitor turpis litora vivamus tempus! Parturient aenean sed iaculis turpis gravida porttitor lacus dis.",
+    avatar: avatar,
+  },
+  {
+    author: "John Doe",
+    authorPosition: "Pelanggan HaeBot",
+    score: 5,
+    testimonial:
+      "Lorem ipsum odor amet, consectetuer adipiscing elit. Platea eros aptent natoque magnis porttitor turpis litora vivamus tempus! Parturient aenean sed iaculis turpis gravida porttitor lacus dis.",
+    avatar: avatar,
+  },
+];
+
+function TestimonialSection() {
+  const { ref, inView } = useInView({ threshold: 0.3, triggerOnce: true });
+
+  return (
+    <section
+      ref={ref}
+      id="testimonial-section"
+      aria-labelledby="testimonial-section-title"
+      className="py-8 sm:py-16"
+    >
+      <div className="mx-auto max-w-screen-xl px-6 lg:px-16">
+        <header className="mb-8">
+          <h2
+            id="testimonial-section-title"
+            className={cn(
+              "mb-2 max-w-screen-md text-2xl font-bold opacity-0 md:text-3xl",
+              inView &&
+                "opacity-1 duration-700 ease-in-out animate-in fade-in slide-in-from-left-8",
+            )}
+          >
+            Lihat apa yang pelanggan kami katakan
+          </h2>
+          <p
+            className={cn(
+              "max-w-screen-md text-base text-muted-foreground opacity-0 sm:text-lg",
+              inView &&
+                "opacity-1 duration-1000 ease-in-out animate-in fade-in slide-in-from-left-8",
+            )}
+          >
+            Berikut adalah beberapa testimoni dari pelanggan yang telah
+            merasakan pengalaman kami.
+          </p>
+        </header>
+        <div className="flex flex-col gap-5">
+          {Testimonials.map((testimonial, index) => {
+            return (
+              <Card
+                key={testimonial.author + index}
+                className={cn("max-w-2xl p-6", index % 2 === 1 && "ml-auto")}
+              >
+                <CardContent className="text-lg md:text-xl">
+                  &quot;{testimonial.testimonial}&quot;
+                </CardContent>
+                <CardHeader className="py-0">
+                  <div
+                    className={cn(
+                      "flex items-center gap-4",
+                      index % 2 === 1 && "flex-row-reverse justify-start",
+                    )}
+                  >
+                    <Image
+                      alt="John Doe's Avatar"
+                      className="aspect-square size-6 rounded-full object-cover"
+                      src={testimonial.avatar}
+                    />
+                    <div>
+                      <CardTitle className="text-base">
+                        {testimonial.author}
+                      </CardTitle>
+                      <CardDescription>
+                        {testimonial.authorPosition}
+                      </CardDescription>
+                    </div>
+                  </div>
+                </CardHeader>
+              </Card>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
 
 function CTASection() {
   const { ref, inView } = useInView({ threshold: 0.3, triggerOnce: true });
@@ -46,15 +171,14 @@ function CTASection() {
           </h2>
           <p
             className={cn(
-              "mx-auto max-w-screen-md text-center text-base text-zinc-400 opacity-0 sm:text-lg",
+              "mx-auto max-w-screen-md text-center text-base text-muted-foreground opacity-0 sm:text-lg",
               inView &&
                 "opacity-1 duration-1000 ease-in-out animate-in fade-in slide-in-from-left-8",
             )}
           >
             Bergabunglah dengan kami di HaeBot untuk mendapatkan komponen CNC
             berkualitas tinggi dan layanan konsultasi ahli yang akan
-            meningkatkan efisiensi operasional mesin Anda. Temukan solusi yang
-            tepat untuk kebutuhan industri Anda.
+            meningkatkan efisiensi operasional mesin Anda
           </p>
         </header>
         <div className="flex items-center justify-center">
@@ -404,6 +528,7 @@ export default function Home() {
       <CarouselSection />
       <FeatureSection />
       <CTASection />
+      <TestimonialSection />
     </>
   );
 }

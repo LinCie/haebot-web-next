@@ -41,40 +41,88 @@ interface ITestimonialCard {
 const Testimonials: ITestimonialCard[] = [
   {
     author: "John Doe",
-    authorPosition: "Pelanggan HaeBot",
+    authorPosition: "Manajer Produksi",
     score: 5,
     testimonial:
-      "Lorem ipsum odor amet, consectetuer adipiscing elit. Platea eros aptent natoque magnis porttitor turpis litora vivamus tempus! Parturient aenean sed iaculis turpis gravida porttitor lacus dis.",
+      "Kami telah meningkatkan efisiensi produksi dan kualitas produk dengan menggunakan solusi CNC dari HaeBot. Dukungan teknis mereka sangat profesional dan membantu kami mengoptimalkan proses produksi.",
     avatar: avatar,
   },
   {
-    author: "John Doe",
-    authorPosition: "Pelanggan HaeBot",
+    author: "Jane Doe",
+    authorPosition: "Direktur Operasional",
     score: 5,
     testimonial:
-      "Lorem ipsum odor amet, consectetuer adipiscing elit. Platea eros aptent natoque magnis porttitor turpis litora vivamus tempus! Parturient aenean sed iaculis turpis gravida porttitor lacus dis.",
+      "HaeBot telah membantu kami menemukan solusi CNC yang tepat untuk kebutuhan industri kami. Mereka memberikan kami dukungan yang sangat baik dan membantu kami meningkatkan produktivitas.",
     avatar: avatar,
   },
   {
-    author: "John Doe",
-    authorPosition: "Pelanggan HaeBot",
+    author: "Joko",
+    authorPosition: "Supervisor Produksi",
     score: 5,
     testimonial:
-      "Lorem ipsum odor amet, consectetuer adipiscing elit. Platea eros aptent natoque magnis porttitor turpis litora vivamus tempus! Parturient aenean sed iaculis turpis gravida porttitor lacus dis.",
+      "Saya sangat puas dengan kualitas mesin CNC dari HaeBot. Mereka telah membantu kami merampingkan proses produksi dan mengurangi biaya dengan signifikan.",
     avatar: avatar,
   },
   {
-    author: "John Doe",
-    authorPosition: "Pelanggan HaeBot",
+    author: "Rina",
+    authorPosition: "Manajer Kontrol Kualitas",
     score: 5,
     testimonial:
-      "Lorem ipsum odor amet, consectetuer adipiscing elit. Platea eros aptent natoque magnis porttitor turpis litora vivamus tempus! Parturient aenean sed iaculis turpis gravida porttitor lacus dis.",
+      "Kami telah melihat perbaikan signifikan dalam kualitas produk kami sejak menggunakan solusi CNC dari HaeBot. Mereka memberikan kami dukungan yang sangat baik dan membantu kami meningkatkan kepuasan pelanggan.",
     avatar: avatar,
   },
 ];
 
+function TestimonialCard({
+  testimonial,
+  index,
+}: {
+  testimonial: ITestimonialCard;
+  index: number;
+}) {
+  const { ref, inView } = useInView({ threshold: 1, triggerOnce: true });
+  const isOdd = index % 2 === 1;
+
+  return (
+    <Card
+      ref={ref}
+      className={cn(
+        "max-w-2xl p-6 opacity-0",
+        isOdd && "ml-auto",
+        isOdd
+          ? inView &&
+              "opacity-1 duration-1000 ease-in-out animate-in fade-in slide-in-from-right-8"
+          : inView &&
+              "opacity-1 duration-1000 ease-in-out animate-in fade-in slide-in-from-left-8",
+      )}
+    >
+      <CardContent className="text-lg md:text-xl">
+        &quot;{testimonial.testimonial}&quot;
+      </CardContent>
+      <CardHeader className="py-0">
+        <div
+          className={cn(
+            "flex items-center gap-4",
+            index % 2 === 1 && "flex-row-reverse justify-start",
+          )}
+        >
+          <Image
+            alt="John Doe's Avatar"
+            className="aspect-square size-10 rounded-full object-cover shadow-inner"
+            src={testimonial.avatar}
+          />
+          <div>
+            <CardTitle className="text-base">{testimonial.author}</CardTitle>
+            <CardDescription>{testimonial.authorPosition}</CardDescription>
+          </div>
+        </div>
+      </CardHeader>
+    </Card>
+  );
+}
+
 function TestimonialSection() {
-  const { ref, inView } = useInView({ threshold: 0.3, triggerOnce: true });
+  const { ref, inView } = useInView({ threshold: 0.2, triggerOnce: true });
 
   return (
     <section
@@ -107,40 +155,13 @@ function TestimonialSection() {
           </p>
         </header>
         <div className="flex flex-col gap-5">
-          {Testimonials.map((testimonial, index) => {
-            return (
-              <Card
-                key={testimonial.author + index}
-                className={cn("max-w-2xl p-6", index % 2 === 1 && "ml-auto")}
-              >
-                <CardContent className="text-lg md:text-xl">
-                  &quot;{testimonial.testimonial}&quot;
-                </CardContent>
-                <CardHeader className="py-0">
-                  <div
-                    className={cn(
-                      "flex items-center gap-4",
-                      index % 2 === 1 && "flex-row-reverse justify-start",
-                    )}
-                  >
-                    <Image
-                      alt="John Doe's Avatar"
-                      className="aspect-square size-6 rounded-full object-cover"
-                      src={testimonial.avatar}
-                    />
-                    <div>
-                      <CardTitle className="text-base">
-                        {testimonial.author}
-                      </CardTitle>
-                      <CardDescription>
-                        {testimonial.authorPosition}
-                      </CardDescription>
-                    </div>
-                  </div>
-                </CardHeader>
-              </Card>
-            );
-          })}
+          {Testimonials.map((testimonial, index) => (
+            <TestimonialCard
+              key={index}
+              testimonial={testimonial}
+              index={index}
+            />
+          ))}
         </div>
       </div>
     </section>
@@ -148,17 +169,17 @@ function TestimonialSection() {
 }
 
 function CTASection() {
-  const { ref, inView } = useInView({ threshold: 0.3, triggerOnce: true });
+  const { ref, inView } = useInView({ threshold: 0.75, triggerOnce: true });
 
   return (
     <section
       ref={ref}
       id="cta-section"
       aria-labelledby="cta-section-title"
-      className="py-8 sm:py-16"
+      className="py-12 md:py-16"
     >
       <div className="mx-auto max-w-screen-xl px-6 lg:px-16">
-        <header className="mb-8">
+        <header className="lg:md-7 mb-5 md:mb-6">
           <h2
             id="cta-section-header"
             className={cn(
@@ -244,14 +265,14 @@ function CarouselSection() {
       id="carousel-section"
       aria-labelledby="carousel-section-title"
       ref={ref}
-      className="bg-background py-8 text-foreground sm:py-16"
+      className="py-12 md:py-16"
     >
-      <div className="mx-auto max-w-screen-xl px-6 lg:px-16">
-        <header className="mb-8 text-center sm:mb-20">
+      <div className="mx-auto max-w-screen-xl px-6 md:px-12 lg:px-16">
+        <header className="mx-auto mb-10 max-w-screen-md text-center md:mb-12 lg:mb-16">
           <h2
             id="carousel-section-title"
             className={cn(
-              "mb-2 text-3xl font-bold opacity-0",
+              "mb-1 text-3xl font-bold opacity-0 md:mb-2 md:text-4xl",
               inView &&
                 "opacity-1 duration-700 ease-in-out animate-in fade-in slide-in-from-left-8",
             )}
@@ -260,7 +281,7 @@ function CarouselSection() {
           </h2>
           <p
             className={cn(
-              "text-base text-muted-foreground opacity-0",
+              "text-muted-foreground opacity-0 md:text-lg",
               inView &&
                 "opacity-1 duration-1000 ease-in-out animate-in fade-in slide-in-from-left-8",
             )}
@@ -294,7 +315,7 @@ function CarouselSection() {
                     className="md:basis-1/2 lg:basis-1/3 xl:basis-1/4"
                     key={product.title}
                   >
-                    <Card className="width mx-auto w-full max-w-xs rounded-xl border">
+                    <Card className="mx-auto w-full max-w-xs rounded-xl border">
                       <div className="grid gap-4 p-4">
                         <div className="aspect-[4/5] w-full overflow-hidden rounded-xl">
                           <Image
@@ -308,17 +329,14 @@ function CarouselSection() {
                           />
                         </div>
                         <div className="grid gap-1.5">
-                          <h3 className="text-base font-semibold md:text-base">
+                          <h3 className="font-bold lg:text-lg">
                             {product.title}
                           </h3>
                           <p className="text-sm text-muted-foreground md:text-base">
                             {product.description}
                           </p>
                         </div>
-                        <Button
-                          className="bg-[#075E54] hover:bg-[#075E54]/90 [&_svg]:size-5"
-                          asChild
-                        >
+                        <Button className="[&_svg]:size-5" asChild>
                           <a
                             href={
                               "https://wa.me/62812345678?text=" +
@@ -399,20 +417,20 @@ const features: IFeature[] = [
 ];
 
 function FeatureSection() {
-  const { ref, inView } = useInView({ threshold: 0.3, triggerOnce: true });
+  const { ref, inView } = useInView({ threshold: 0.4, triggerOnce: true });
 
   return (
     <section
       ref={ref}
-      className="bg-background py-8 text-foreground sm:py-16"
+      className="bg-primary-950 py-12 md:py-16"
       aria-labelledby="feature-section-title"
     >
-      <div className="mx-auto max-w-screen-xl px-6 lg:px-16">
-        <header className="mb-8 sm:mb-20">
+      <div className="mx-auto max-w-screen-xl px-6 md:px-12 lg:px-16">
+        <header className="mb-10 md:mb-12 lg:mb-16">
           <h2
             id="feature-section-title"
             className={cn(
-              "mb-2 max-w-screen-md text-3xl font-bold opacity-0 md:text-4xl",
+              "mb-2 max-w-screen-md text-3xl font-bold text-background opacity-0 md:text-4xl",
               inView &&
                 "opacity-1 duration-700 ease-in-out animate-in fade-in slide-in-from-left-8",
             )}
@@ -421,7 +439,7 @@ function FeatureSection() {
           </h2>
           <p
             className={cn(
-              "max-w-screen-sm text-base text-muted-foreground opacity-0 sm:text-lg",
+              "max-w-screen-sm text-secondary opacity-0 md:text-lg",
               inView &&
                 "opacity-1 duration-1000 ease-in-out animate-in fade-in slide-in-from-left-8",
             )}
@@ -440,15 +458,13 @@ function FeatureSection() {
         >
           {features.map((feature, index) => (
             <li key={index} className="flex flex-col" role="listitem">
-              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded bg-primary/75 text-primary-foreground">
+              <div className="mb-3 flex size-12 items-center justify-center rounded bg-secondary text-secondary-foreground md:mb-4">
                 {feature.icon}
               </div>
-              <h3 className="text-xl font-bold text-foreground">
+              <h3 className="text-xl font-bold text-background">
                 {feature.title}
               </h3>
-              <p className="text-base text-muted-foreground">
-                {feature.description}
-              </p>
+              <p className="text-muted">{feature.description}</p>
             </li>
           ))}
         </ul>
@@ -472,20 +488,20 @@ function HeroSection() {
           loading="eager"
           className="size-full object-cover"
         />
-        <div className="absolute inset-0 bg-blue-950 opacity-80" />
-        <div className="absolute inset-0 mx-auto flex max-w-screen-lg flex-col items-center justify-center gap-6 px-4">
+        <div className="absolute inset-0 bg-primary-950 opacity-80" />
+        <div className="absolute inset-0 mx-auto flex max-w-screen-md flex-col items-center justify-center px-4 md:max-w-screen-lg">
           <header>
-            <small className="mb-2 block text-center text-xs leading-none text-background lg:text-sm">
+            <small className="mb-1 hidden text-center text-xs leading-none text-secondary md:mb-2 md:block md:text-sm">
               Meningkatkan Efisiensi Operasional Anda dengan Solusi CNC
               Terpercaya
             </small>
             <h2
               id="hero-section-title"
-              className="mb-3 scroll-m-20 text-center text-4xl font-extrabold tracking-tight text-background md:mb-4 lg:mb-5 lg:text-6xl"
+              className="mb-2 scroll-m-20 text-center text-4xl font-bold tracking-tight text-background md:mb-3 md:text-5xl lg:mb-4 lg:text-6xl"
             >
               Solusi Terbaik untuk Kebutuhan CNC Anda
             </h2>
-            <p className="text base mb-4 text-center text-base tracking-tight text-muted lg:text-lg">
+            <p className="text base mb-5 text-center text-base tracking-tight text-secondary md:mb-6 md:text-lg lg:mb-7">
               Dapatkan komponen berkualitas tinggi dan layanan konsultasi ahli
               untuk meningkatkan produktivitas Anda
             </p>
@@ -527,8 +543,8 @@ export default function Home() {
       <HeroSection />
       <CarouselSection />
       <FeatureSection />
-      <CTASection />
       <TestimonialSection />
+      <CTASection />
     </>
   );
 }

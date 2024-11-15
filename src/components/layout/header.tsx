@@ -72,7 +72,7 @@ export default function Header() {
                 if (headerLink.content !== undefined) {
                   return (
                     <NavigationMenuItem key={headerLink.display}>
-                      <NavigationMenuTrigger>
+                      <NavigationMenuTrigger className="text-foreground/80 hover:text-foreground/70 focus:text-foreground/70">
                         {headerLink.display}
                       </NavigationMenuTrigger>
                       <NavigationMenuContent>
@@ -99,7 +99,7 @@ export default function Header() {
                         aria-current={isCurrent ? "page" : "false"}
                         className={cn(
                           navigationMenuTriggerStyle(),
-                          "text-foreground hover:text-foreground/70 focus:text-foreground/70",
+                          "text-foreground/80 hover:text-foreground/70 focus:text-foreground/70",
                           isCurrent &&
                             "text-primary hover:text-primary/70 focus:text-primary/70",
                         )}

@@ -452,7 +452,7 @@ function FeatureSection() {
           className={cn(
             "grid grid-cols-1 gap-8 opacity-0 sm:grid-cols-2 sm:gap-12 md:grid-cols-3",
             inView &&
-              "opacity-1 duration-1000 ease-in-out animate-in fade-in slide-in-from-left-8",
+              "opacity-1 duration-1000 ease-in-out animate-in fade-in slide-in-from-bottom-8",
           )}
           role="list"
         >

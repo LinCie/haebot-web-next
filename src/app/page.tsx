@@ -101,7 +101,7 @@ function TestimonialCard({
           role="img"
           focusable="false"
           aria-hidden="true"
-          className="mr-2 inline-block size-5 fill-primary-300 text-primary-500 md:size-6"
+          className="mr-2 inline-block size-5 rotate-180 fill-primary-300 text-primary-500 md:size-6"
         />
         <span>{testimonial.testimonial}</span>
         <Quote

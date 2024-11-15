@@ -280,7 +280,7 @@ function CarouselSection() {
       className="py-12 md:py-16"
     >
       <div className="mx-auto max-w-screen-xl px-6 md:px-12 lg:px-16">
-        <header className="mx-auto mb-10 max-w-screen-md text-center md:mb-12 lg:mb-16">
+        <header className="mx-auto mb-8 max-w-screen-md text-center md:mb-10 lg:mb-12">
           <h2
             id="carousel-section-title"
             className={cn(
@@ -438,7 +438,7 @@ function FeatureSection() {
       aria-labelledby="feature-section-title"
     >
       <div className="mx-auto max-w-screen-xl px-6 md:px-12 lg:px-16">
-        <header className="mb-10 md:mb-12 lg:mb-16">
+        <header className="mb-8 md:mb-10 lg:mb-12">
           <h2
             id="feature-section-title"
             className={cn(

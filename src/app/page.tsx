@@ -3,7 +3,7 @@
 import Image, { StaticImageData } from "next/image";
 import { useInView } from "react-intersection-observer";
 
-import { Phone, Package, Settings, Users } from "lucide-react";
+import { Phone, Package, Settings, Users, Quote } from "lucide-react";
 
 import avatar from "@/assets/avayar.jpg";
 import machine from "@/assets/machine.jpg";
@@ -80,7 +80,7 @@ function TestimonialCard({
   testimonial: ITestimonialCard;
   index: number;
 }) {
-  const { ref, inView } = useInView({ threshold: 1, triggerOnce: true });
+  const { ref, inView } = useInView({ threshold: 0.5, triggerOnce: true });
   const isOdd = index % 2 === 1;
 
   return (
@@ -96,8 +96,20 @@ function TestimonialCard({
               "opacity-1 duration-1000 ease-in-out animate-in fade-in slide-in-from-left-8",
       )}
     >
-      <CardContent className="text-lg md:text-xl">
-        &quot;{testimonial.testimonial}&quot;
+      <CardContent className="text-base md:text-lg">
+        <Quote
+          role="img"
+          focusable="false"
+          aria-hidden="true"
+          className="mr-2 inline-block size-5 fill-primary-300 text-primary-500 md:size-6"
+        />
+        <span>{testimonial.testimonial}</span>
+        <Quote
+          role="img"
+          focusable="false"
+          aria-hidden="true"
+          className="ml-2 inline-block size-5 fill-primary-300 text-primary-500 md:size-6"
+        />
       </CardContent>
       <CardHeader className="py-0">
         <div
@@ -129,14 +141,14 @@ function TestimonialSection() {
       ref={ref}
       id="testimonial-section"
       aria-labelledby="testimonial-section-title"
-      className="py-8 sm:py-16"
+      className="py-12 sm:py-16"
     >
-      <div className="mx-auto max-w-screen-xl px-6 lg:px-16">
-        <header className="mb-8">
+      <div className="mx-auto max-w-screen-xl px-6 md:px-12 lg:px-16">
+        <header className="mx-auto mb-8 max-w-screen-md text-center md:mb-10 lg:mb-12">
           <h2
             id="testimonial-section-title"
             className={cn(
-              "mb-2 max-w-screen-md text-2xl font-bold opacity-0 md:text-3xl",
+              "mb-1 text-3xl font-bold opacity-0 md:mb-2 md:text-4xl",
               inView &&
                 "opacity-1 duration-700 ease-in-out animate-in fade-in slide-in-from-left-8",
             )}
@@ -145,7 +157,7 @@ function TestimonialSection() {
           </h2>
           <p
             className={cn(
-              "max-w-screen-md text-base text-muted-foreground opacity-0 sm:text-lg",
+              "text-base text-muted-foreground opacity-0 sm:text-lg",
               inView &&
                 "opacity-1 duration-1000 ease-in-out animate-in fade-in slide-in-from-left-8",
             )}

@@ -460,6 +460,7 @@ function FeatureSection() {
             konsultasi ahli untuk meningkatkan efisiensi operasional mesin Anda.
           </p>
         </header>
+
         <ul
           className={cn(
             "grid grid-cols-1 gap-8 opacity-0 sm:grid-cols-2 sm:gap-12 md:grid-cols-3",
@@ -473,9 +474,11 @@ function FeatureSection() {
               <div className="mb-3 flex size-12 items-center justify-center rounded bg-secondary text-secondary-foreground md:mb-4">
                 {feature.icon}
               </div>
+
               <h3 className="text-xl font-bold text-background">
                 {feature.title}
               </h3>
+
               <p className="text-muted">{feature.description}</p>
             </li>
           ))}
@@ -502,18 +505,18 @@ function HeroSection() {
         />
         <div className="absolute inset-0 bg-primary-950 opacity-80" />
         <div className="absolute inset-0 mx-auto flex max-w-screen-md flex-col items-center justify-center px-4 md:max-w-screen-lg">
-          <header>
-            <small className="mb-1 hidden text-center text-xs leading-none text-secondary md:mb-2 md:block md:text-sm">
+          <header className="text-center">
+            <small className="mb-1 hidden text-xs leading-none text-secondary md:mb-2 md:block md:text-sm">
               Meningkatkan Efisiensi Operasional Anda dengan Solusi CNC
               Terpercaya
             </small>
             <h2
               id="hero-section-title"
-              className="mb-2 scroll-m-20 text-center text-4xl font-bold tracking-tight text-background md:mb-3 md:text-5xl lg:mb-4 lg:text-6xl"
+              className="mb-2 scroll-m-20 text-4xl font-bold tracking-tight text-background md:mb-3 md:text-5xl lg:mb-4 lg:text-6xl"
             >
               Solusi Terbaik untuk Kebutuhan CNC Anda
             </h2>
-            <p className="text base mb-5 text-center text-base tracking-tight text-secondary md:mb-6 md:text-lg lg:mb-7">
+            <p className="mb-5 text-base tracking-tight text-secondary md:mb-6 md:text-lg lg:mb-7">
               Dapatkan komponen berkualitas tinggi dan layanan konsultasi ahli
               untuk meningkatkan produktivitas Anda
             </p>

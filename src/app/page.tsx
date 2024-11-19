@@ -101,14 +101,14 @@ function TestimonialCard({
           role="img"
           focusable="false"
           aria-hidden="true"
-          className="mr-2 inline-block size-5 rotate-180 fill-primary-300 text-primary-500 md:size-6"
+          className="mr-2 inline-block size-5 rotate-180 fill-secondary text-primary md:size-6"
         />
         <span>{testimonial.testimonial}</span>
         <Quote
           role="img"
           focusable="false"
           aria-hidden="true"
-          className="ml-2 inline-block size-5 fill-primary-300 text-primary-500 md:size-6"
+          className="ml-2 inline-block size-5 fill-secondary text-primary md:size-6"
         />
       </CardContent>
       <CardHeader className="py-0">
@@ -434,7 +434,7 @@ function FeatureSection() {
   return (
     <section
       ref={ref}
-      className="bg-primary-950 py-12 md:py-16"
+      className="bg-primary py-12 md:py-16"
       aria-labelledby="feature-section-title"
     >
       <div className="mx-auto max-w-screen-xl px-6 md:px-12 lg:px-16">
@@ -451,7 +451,7 @@ function FeatureSection() {
           </h2>
           <p
             className={cn(
-              "max-w-screen-sm text-secondary opacity-0 md:text-lg",
+              "max-w-screen-sm text-muted opacity-0 md:text-lg",
               inView &&
                 "opacity-1 duration-1000 ease-in-out animate-in fade-in slide-in-from-left-8",
             )}
@@ -471,7 +471,7 @@ function FeatureSection() {
         >
           {features.map((feature, index) => (
             <li key={index} className="flex flex-col" role="listitem">
-              <div className="mb-3 flex size-12 items-center justify-center rounded bg-secondary text-secondary-foreground md:mb-4">
+              <div className="mb-3 flex size-12 items-center justify-center rounded bg-background text-secondary-foreground md:mb-4">
                 {feature.icon}
               </div>
 
@@ -503,7 +503,7 @@ function HeroSection() {
           loading="eager"
           className="size-full object-cover"
         />
-        <div className="absolute inset-0 bg-primary-950 opacity-80" />
+        <div className="absolute inset-0 bg-blue-900 opacity-80" />
         <div className="absolute inset-0 mx-auto flex max-w-screen-md flex-col items-center justify-center px-4 md:max-w-screen-lg">
           <header className="text-center">
             <small className="mb-1 hidden text-xs leading-none text-secondary md:mb-2 md:block md:text-sm">
@@ -521,7 +521,7 @@ function HeroSection() {
               untuk meningkatkan produktivitas Anda
             </p>
           </header>
-          <Button variant="secondary">
+          <Button variant="outline">
             Hubungi Kami
             <Phone
               role="img"
@@ -563,3 +563,4 @@ export default function Home() {
     </>
   );
 }
+
